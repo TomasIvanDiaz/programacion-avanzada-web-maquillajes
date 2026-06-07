@@ -9,25 +9,38 @@ import java.sql.SQLException;
 
 public class UsuarioDAO {
 	
-	public Usuario login(String usuario, String password) {
-		String sql = "SELECT * FROM usuario WHERE usuario = ? AND password = ?";
-		System.out.println("1er consulta sql: " + sql);
+	static {
 		
 		try {
-			Connection con = DBConnection.getConnection(); //Establecemos conexion con la base de datos
-			PreparedStatement ps = con.prepareStatement(sql); //Prepara la base de datos para poder enviar los valroes reales (y realizar la consulta)
-			ps.setString(1, usuario); //Completa en la base de datos a los signos de '?'
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public Usuario login(String usuario, String password) {
+		String sql = "SELECT * FROM usuario WHERE usuario = ? AND password = ?";
+		
+		try {
+			Connection con = DBConnection.getConnection(); //ESTABLECEMOS CONEXION CON LA BASE DE DATOS
+			PreparedStatement ps = con.prepareStatement(sql); //PREPARA LA BASE DE DATOS PARA PODER ENVIAR LOS VALROES REALES (Y REALIZAR LA CONSULTA)
+			ps.setString(1, usuario); //COMPLETA EN LA BASE DE DATOS A LOS SIGNOS DE '?'
 			ps.setString(2, password);
 			
-			ResultSet rs = ps.executeQuery(); //Devuelve una tabla con las filas encontradas (el rs)
+			ResultSet rs = ps.executeQuery(); //DEVUELVE UNA TABLA CON LAS FILAS ENCONTRADAS (EL RS)
 			
-			if (rs.next()) { //Existe el usuario
-	            Usuario u = new Usuario(); // Crea un usuario
-	            u.setId(rs.getInt("id")); //Hace un set del id para el Servlet, obteniendolo a partir de la fila rs que obtiene un entero de la columna 'id'
+			if (rs.next()) { //EXISTE EL USUARIO
+	            Usuario u = new Usuario(); // CREA UN USUARIO
+	            u.setId(rs.getInt("id")); //HACE UN SET DEL ID PARA EL SERVLET, OBTENIENDOLO A PARTIR DE LA FILA RS QUE OBTIENE UN ENTERO DE LA COLUMNA 'ID'
 	            u.setUsuario(rs.getString("usuario"));
 	            u.setPassword(rs.getString("password"));
 	            u.setEsAdmin(rs.getBoolean("esAdmin"));
-	            return u; //Devuelve el objeto
+	            u.setNombre(rs.getString("nombre"));
+	            u.setApellido(rs.getString("apellido"));
+	            u.setDomicilio(rs.getString("domicilio"));
+	            u.setTelefono(rs.getString("telefono"));
+	            u.setCodigoPostal(rs.getString("codigoPostal"));
+	            return u; //DEVUELVE EL OBJETO
 	        } else {
 	            System.out.println("Usuario no encontrado");
 	        }
@@ -55,6 +68,11 @@ public class UsuarioDAO {
 	            u.setUsuario(rs.getString("usuario"));
 	            u.setPassword(rs.getString("password"));
 	            u.setEsAdmin(rs.getBoolean("esAdmin"));
+	            u.setNombre(rs.getString("nombre"));
+	            u.setApellido(rs.getString("apellido"));
+	            u.setDomicilio(rs.getString("domicilio"));
+	            u.setTelefono(rs.getString("telefono"));
+	            u.setCodigoPostal(rs.getString("codigoPostal"));
 	            return u;
 	        }
 	        
