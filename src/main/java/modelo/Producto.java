@@ -7,20 +7,26 @@ public class Producto {
 	private double precio;
 	private int stock;
 	private boolean activo;
+	private String marca;
+	private String imagen;
 	private int idCategoria;
 	
 	public Producto() {}
 	
-	public Producto (int id, String nombre, String descripcion, double precio, int stock, boolean activo, int idCategoria) {
+	public Producto (int id, String nombre, String descripcion, double precio, int stock, boolean activo, String marca, String imagen, int idCategoria) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.precio = precio;
 		this.stock = stock;
 		this.activo = activo;
+		this.marca = marca;
+		this.imagen = imagen;
 		this.idCategoria = idCategoria;
 	}
 	
+	
+
 	public int getId() {
 		return id;
 	}
@@ -67,6 +73,22 @@ public class Producto {
 	
 	public void setActivo(boolean activo) {
 		this.activo = activo;
+	}
+	
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 	
 	public int getIdCategoria() {

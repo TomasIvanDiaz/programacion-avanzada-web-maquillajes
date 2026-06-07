@@ -27,6 +27,11 @@ public class UsuarioDAO {
 	            u.setUsuario(rs.getString("usuario"));
 	            u.setPassword(rs.getString("password"));
 	            u.setEsAdmin(rs.getBoolean("esAdmin"));
+	            u.setNombre(rs.getString("nombre"));
+	            u.setApellido(rs.getString("apellido"));
+	            u.setDomicilio(rs.getString("domicilio"));
+	            u.setTelefono(rs.getString("telefono"));
+	            u.setCodigoPostal(rs.getString("codigoPostal"));
 	            return u; //Devuelve el objeto
 	        } else {
 	            System.out.println("Usuario no encontrado");
@@ -55,6 +60,11 @@ public class UsuarioDAO {
 	            u.setUsuario(rs.getString("usuario"));
 	            u.setPassword(rs.getString("password"));
 	            u.setEsAdmin(rs.getBoolean("esAdmin"));
+	            u.setNombre(rs.getString("nombre"));
+	            u.setApellido(rs.getString("apellido"));
+	            u.setDomicilio(rs.getString("domicilio"));
+	            u.setTelefono(rs.getString("telefono"));
+	            u.setCodigoPostal(rs.getString("codigoPostal"));
 	            return u;
 	        }
 	        
@@ -65,4 +75,3 @@ public class UsuarioDAO {
 	    return null;
 	}
 }
-
