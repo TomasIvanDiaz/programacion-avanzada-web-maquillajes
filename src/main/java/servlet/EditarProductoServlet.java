@@ -24,7 +24,7 @@ public class EditarProductoServlet extends HttpServlet {
         }
         Usuario usuario = (Usuario) sesion.getAttribute("usuario");
         if (!usuario.isEsAdmin()) {
-            response.sendRedirect("catalogo");
+        	response.sendRedirect("catalogo");
             return false;
         }
         return true;

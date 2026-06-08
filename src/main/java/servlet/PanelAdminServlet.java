@@ -32,7 +32,7 @@ public class PanelAdminServlet extends HttpServlet {
     	//SI NO ES ADMIN, Y ES USUARIO, REDIRIGE AL CATALOGO
     	Usuario usuario = (Usuario) sesion.getAttribute("usuario");
     	if (!usuario.isEsAdmin()) {
-    	    response.sendRedirect("catalogo");
+    		response.sendRedirect("catalogo");
     	    return;
     	}
     	
