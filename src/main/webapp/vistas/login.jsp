@@ -6,7 +6,7 @@
     <title>Login</title>
     <link rel="stylesheet" href="css/estilos.css">
 </head>
-<body>
+<body class="centrado">
     <div class="caja">
         <h2>Iniciar Sesión</h2>
         <form action="login" method="post">
