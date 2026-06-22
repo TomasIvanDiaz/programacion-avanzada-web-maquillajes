@@ -71,6 +71,8 @@
     <div class="pagina-footer">
         <a href="<%= request.getContextPath() %>/logout" class="btn">Cerrar sesión</a>
     </div>
+    
+    
 
 </body>
 </html>
