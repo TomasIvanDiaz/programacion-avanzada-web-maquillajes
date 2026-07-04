@@ -30,24 +30,11 @@ public class EliminarProducto extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        if (!validarAdmin(request, response)) return;
-
-        // MOSTRAMOS LA PAGINA DE CONFIRMACION CON EL ID DEL PRODUCTO
-        int id = Integer.parseInt(request.getParameter("id"));
-        request.setAttribute("id", id);
-        request.getRequestDispatcher("/vistas/confirmarEliminar.jsp").forward(request, response);
-    }
-
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         if (!validarAdmin(request, response)) return;
 
-        // ELIMINAMOS EL PRODUCTO Y VOLVEMOS AL PANEL
         int id = Integer.parseInt(request.getParameter("id"));
         ProductoDAO productoDAO = new ProductoDAO();
         productoDAO.eliminarProducto(id);

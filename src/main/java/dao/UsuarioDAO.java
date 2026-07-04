@@ -82,5 +82,44 @@ public class UsuarioDAO {
 	    
 	    return null;
 	}
+	
+	public boolean existeUsuario(String usuario) {
+		String sql = "SELECT id FROM usuario WHERE usuario = ?";
+
+		try {
+			Connection con = DBConnection.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, usuario);
+			ResultSet rs = ps.executeQuery();
+			return rs.next(); // SI ENCUENTRA UNA FILA, EL USUARIO YA EXISTE
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public boolean registroUsuario(Usuario user) {
+		String sql = "INSERT INTO usuario (usuario, password, esAdmin, nombre, apellido, domicilio, telefono, codigoPostal, mail) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+		try {
+			Connection con = DBConnection.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, user.getUsuario());
+			ps.setString(2, user.getPassword());
+			ps.setBoolean(3, false); // SIEMPRE SE REGISTRA COMO CLIENTE, NUNCA COMO ADMIN
+			ps.setString(4, user.getNombre());
+			ps.setString(5, user.getApellido());
+			ps.setString(6, user.getDomicilio());
+			ps.setString(7, user.getTelefono());
+			ps.setString(8, user.getCodigoPostal());
+			ps.setString(9, user.getMail());
+
+			int filas = ps.executeUpdate();
+			return filas > 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }
 

@@ -18,6 +18,13 @@
            if (error != null) { %>
              <p class="error"><%= error %></p>
         <% } %>
+
+        <% String registrado = request.getParameter("registrado");
+           if ("true".equals(registrado)) { %>
+             <p style="color: green; margin-top: 12px; font-size: 0.9rem;">¡Registro exitoso! Ya podés iniciar sesión.</p>
+        <% } %>
+
+        <p style="margin-top: 16px; font-size: 0.9rem;">¿No tenés cuenta? <a href="<%= request.getContextPath() %>/registro">Registrate</a></p>
     </div>
 </body>
 </html>

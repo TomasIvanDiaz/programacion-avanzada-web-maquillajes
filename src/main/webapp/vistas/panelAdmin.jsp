@@ -60,7 +60,7 @@
                             </td>
                             <td style="white-space: nowrap;">
                                 <a href="<%= request.getContextPath() %>/editarProducto?id=<%= producto.getId() %>" class="btn btn-sm">Editar</a>
-                                <a href="<%= request.getContextPath() %>/eliminarProducto?id=<%= producto.getId() %>" class="btn btn-sm btn-peligro">Eliminar</a>
+                                <button onclick="abrirModal(<%= producto.getId() %>)" class="btn btn-sm btn-peligro">Eliminar</button>
                             </td>
                         </tr>
                 <% }} %>
@@ -71,8 +71,30 @@
     <div class="pagina-footer">
         <a href="<%= request.getContextPath() %>/logout" class="btn">Cerrar sesión</a>
     </div>
-    
-    
+
+    <!-- MODAL DE CONFIRMACION -->
+    <div id="fondo-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4);">
+        <div style="background:white; width:340px; margin:200px auto; padding:32px; border-radius:4px; text-align:center;">
+            <p style="margin-bottom:24px; font-size:1rem;">¿Estás seguro que querés eliminar este producto?</p>
+            <form id="form-eliminar" action="<%= request.getContextPath() %>/eliminarProducto" method="post">
+                <input type="hidden" id="input-id" name="id" value="">
+                <div style="display:flex; justify-content:center; gap:12px;">
+                    <button type="submit" class="btn btn-peligro">Sí, eliminar</button>
+                    <button type="button" onclick="cerrarModal()" class="btn">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function abrirModal(id) {
+            document.getElementById("fondo-modal").style.display = "block";
+            document.getElementById("input-id").value = id;
+        }
+        function cerrarModal() {
+            document.getElementById("fondo-modal").style.display = "none";
+        }
+    </script>
 
 </body>
 </html>

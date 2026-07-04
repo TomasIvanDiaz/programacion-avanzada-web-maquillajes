@@ -10,10 +10,11 @@ public class Usuario {
 	private String domicilio;
 	private String telefono;
 	private String codigoPostal;
+	private String mail;
 	
 	public Usuario() {} // Crea el objeto y permite que al crearlo no tengamos que darle todos los atributos directamente
 	
-	public Usuario (int id, String usuario, String password, boolean esAdmin, String nombre, String apellido, String domicilio, String telefono, String codigoPostal) {
+	public Usuario (int id, String usuario, String password, boolean esAdmin, String nombre, String apellido, String domicilio, String telefono, String codigoPostal, String mail) {
 		this.id = id;
 		this.usuario = usuario;
 		this.password = password;
@@ -23,6 +24,7 @@ public class Usuario {
 		this.domicilio = domicilio;
 		this.telefono = telefono;
 		this.codigoPostal = codigoPostal;
+		this.mail = mail;
 		
 	}
 	// Hacemos getters y setters de los atributos porque son variables privadas, asi que accedemos a los valores por medio de los metodos
@@ -98,6 +100,15 @@ public class Usuario {
 	public void setEsAdmin(boolean esAdmin) {
 		this.esAdmin = esAdmin;
 	}
+	
+	public String getMail() {
+		return this.mail;
+	}
+	
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	
 	
 	
 	
