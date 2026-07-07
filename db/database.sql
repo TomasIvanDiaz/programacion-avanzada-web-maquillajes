@@ -24,6 +24,7 @@ CREATE TABLE usuario (
     domicilio VARCHAR(200) NOT NULL,
     telefono VARCHAR(20),
     codigoPostal VARCHAR(10),
+    mail VARCHAR(150) NOT NULL,
     FOREIGN KEY (codigoPostal) REFERENCES cp(codigoPostal)
 );
 
@@ -44,11 +45,14 @@ INSERT INTO cp (codigoPostal, localidad, provincia) VALUES
 ('2000', 'Rosario', 'Santa Fe'),
 ('1000', 'Buenos Aires', 'Buenos Aires'),
 ('5000', 'Córdoba', 'Córdoba');
+('3600', 'Formosa', 'Fornosa');
 
 INSERT INTO categoria (nombre, descripcion) VALUES
 ('Labiales', 'Productos para labios'),
 ('Bases', 'Bases y correctores'),
 ('Ojos', 'Máscaras, sombras y delineadores');
+('Rostro','Contornos, Rubores');
+('Accesorios', 'Brochas, Esponjitas');
 
 INSERT INTO usuario (usuario, password, esAdmin, nombre, apellido, domicilio, telefono, codigoPostal) VALUES
 ('admin', '1234', 1, 'Admin', 'Admin', 'Calle Falsa 123', '3411234567', '2000'),

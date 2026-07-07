@@ -13,18 +13,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Catálogo</title>
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/estilos.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/estilos.css?v=2">
 </head>
-<body>
+<body class="catalogo-page">
 
-    <header class="catalogo-header">
-        <div>
-            <h1>Catálogo</h1>
-            <p>Hola, <%= usuario.getNombre() %>. Estos son nuestros productos disponibles.</p>
-        </div>
+    <header class="topbar">
+    	<div class="logo">
+        <span>TIENDA</span>
+        <small>COSMÉTICOS</small>
+    </div>
 
-        <a href="<%= request.getContextPath() %>/logout" class="btn">Cerrar sesión</a>
-    </header>
+    <nav class="menu">
+        <a href="<%= request.getContextPath() %>/catalogo" class="activo">CATÁLOGO</a>
+    </nav>
+
+    <a href="<%= request.getContextPath() %>/logout" class="btn-cerrar">Cerrar sesión</a>
+	</header>
+
+<section class="catalogo-hero">
+    <div class="adorno">✦</div>
+    <h1>CATÁLOGO</h1>
+    <p>Hola, <%= usuario.getNombre() %>. Estos son nuestros productos disponibles.</p>
+</section>
 
     <main class="catalogo-contenedor">
         <div class="catalogo-grid">

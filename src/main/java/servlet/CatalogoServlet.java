@@ -20,12 +20,12 @@ public class CatalogoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        HttpSession sesion = request.getSession(false);
+        HttpSession sesion = request.getSession(false); //Busca una sesion ya existente
 
         if (sesion == null || sesion.getAttribute("usuario") == null) {
             response.sendRedirect("login");
             return;
-        }
+        } //Verificar si el usuario está logueado
 
         Usuario usuario = (Usuario) sesion.getAttribute("usuario");
 
